@@ -32,8 +32,8 @@ summary(dataset_splitted$test)
 
 # Creating ML model
 ml_algorithm  <- "rf"
-num_cv_rep    <- 5
-tune_length   <- 100
+num_cv_rep    <- 1
+tune_length   <- 1
 show_train    <- TRUE
 
 ### TRAINING THE MODEL
@@ -43,9 +43,10 @@ plot(model_ml)
 model_ml$results
 
 
+
 ### ACCURACY CALCULATION & PRINTING
 acc_model <- 100*get_accuracy(model_ml, dataset_splitted$test)
 cat(sprintf("MODEL SONUCLARI:\nModel Egitim Basarisi: %%%#.1f\nModel Test Basarisi: %%%#.1f\n",
             acc_model[1], acc_model[2]))
 
-confusionMatrix(model_ml)
+model_ml$finalModel
